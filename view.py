@@ -40,14 +40,14 @@ def exibir_livros():
 # Função Empréstimos de livros
 def insert_loan(id_livro, id_usuario, data_emprestimo, data_devolucao):
     conn = connect()
-    conn.execute("INSERT INTO emprestimos(id_livro, id_usuario, data_emprestimo, data_devolucao) VALUES (?, ?, ?, ?)", (id_livro, id_usuario, data_emprestimo, data_devolucao))
+    conn.execute("INSERT INTO emprestimos (id_livro, id_usuario, data_emprestimo, data_devolucao) VALUES (?, ?, ?, ?)", (id_livro, id_usuario, data_emprestimo, data_devolucao))
     conn.commit()
     conn.close()
 
 # Função exibir emprestimos
 def get_books_on_loan():
     conn = connect()
-    result = conn.execute("SELECT livros.titulo, usuarios.nome, usuarios.sobrenome, emprestimos.data_emprestimo, emprestimos.data_devolucao \
+    result = conn.execute("SELECT livros.titulo, usuarios.nome, usuarios.sobrenome, emprestimos.id, emprestimos.data_emprestimo, emprestimos.data_devolucao \
                             FROM livros \
                             INNER JOIN emprestimos ON livros.id = emprestimos.id_livro \
                             INNER JOIN usuarios ON usuarios.id = emprestimos.id_usuario \
@@ -58,14 +58,18 @@ def get_books_on_loan():
 #Função devolução
 def update_loan_return_date(id_emprestimo, data_devolucao):
     conn = connect()
-    conn.execute("UPDATE emprestimos SET data_devolucao = ? WHERE id = ?", (id_emprestimo, data_devolucao))
+    conn.execute("UPDATE emprestimos SET data_devolucao = ? WHERE id = ?", (data_devolucao, id_emprestimo))
     conn.commit()
     conn.close()
+    
 
-livros_emprestados = get_books_on_loan()
+
+
 # Exemplo de uso:
+#livros_emprestados = get_books_on_loan()
 # insert_book("Dom Quixote", "Miguel Carlos", "Editora Aurora", 1958, "999999999")
 # insert_user("Cristiano", "Veríssimo", "12", "Ribeirão das Neves - MG", "(31)99473-0351")
 # insert_loan(1, 1, "03/11/2023", None)
 # exibir_livros()
-print(livros_emprestados)
+#print(livros_emprestados)
+#update_loan_return_date(1, "04/11/2023")
