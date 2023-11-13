@@ -17,6 +17,15 @@ def insert_user(nome, sobrenome, sala, endereco, telefone):
     conn.execute("INSERT INTO usuarios(nome, sobrenome, sala, endereco, telefone) VALUES (?, ?, ?, ?, ?)", (nome, sobrenome, sala, endereco, telefone))
     conn.commit()
     conn.close()
+    
+#Função Exibir Usuarios
+def get_users():
+    conn = connect()
+    c = conn.cursor()
+    c.execute("SELECT * FROM usuarios")
+    users = c.fetchall()
+    conn.close()
+    return users
 
 # Função Exibir livros
 def exibir_livros():
