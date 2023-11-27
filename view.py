@@ -28,23 +28,13 @@ def get_users():
     return users
 
 # Função Exibir livros
-def exibir_livros():
+def get_books():
     conn = connect()
-    livros = conn.execute("SELECT * FROM livros").fetchall()
+    c = conn.cursor()
+    c.execute("SELECT * FROM livros")
+    livros = c.fetchall()
     conn.close()
-    
-    if not livros:
-        print("Não há livros")
-        return
-    print("Livros da Biblioteca: ")
-    for livro in livros:
-        print(f"ID: {livro[0]}")
-        print(f"Título: {livro[1]}")
-        print(f"Autor: {livro[2]}")
-        print(f"Editora: {livro[3]}")
-        print(f"Ano de publicação: {livro[4]}")
-        print(f"ISBN: {livro[5]}")
-        print("\n")
+    return livros
 
 # Função Empréstimos de livros
 def insert_loan(id_livro, id_usuario, data_emprestimo, data_devolucao):
@@ -70,15 +60,3 @@ def update_loan_return_date(id_emprestimo, data_devolucao):
     conn.execute("UPDATE emprestimos SET data_devolucao = ? WHERE id = ?", (data_devolucao, id_emprestimo))
     conn.commit()
     conn.close()
-    
-
-
-
-# Exemplo de uso:
-#livros_emprestados = get_books_on_loan()
-# insert_book("Dom Quixote", "Miguel Carlos", "Editora Aurora", 1958, "999999999")
-# insert_user("Cristiano", "Veríssimo", "12", "Ribeirão das Neves - MG", "(31)99473-0351")
-# insert_loan(1, 1, "03/11/2023", None)
-# exibir_livros()
-#print(livros_emprestados)
-#update_loan_return_date(1, "04/11/2023")
