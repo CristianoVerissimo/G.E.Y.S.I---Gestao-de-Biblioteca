@@ -27,25 +27,39 @@ Frame de Visualização dos Dados: Exibe as informações conforme a funcionalid
 
 # Funcionalidades Principais
 Novo Usuário (novo_usuario)
+
 Permite a criação de um novo usuário. O usuário deve inserir informações como primeiro nome, sobrenome, sala, endereço e telefone.
 
+
 Novo Livro (novo_livro)
+
 Permite a inserção de informações sobre um novo livro, como título, autor, editora, ano e ISBN.
 
+
 Ver Livros (ver_livros)
+
 Apresenta uma tabela com todos os livros cadastrados na biblioteca, exibindo informações como ID, título, autor, editora, ano e ISBN.
 
+
 Ver Usuários (ver_usuarios)
+
 Exibe uma tabela com todos os usuários cadastrados na biblioteca, mostrando informações como ID, nome, sobrenome, sala, endereço e telefone.
 
+
 Realizar Empréstimo (realizar_emprestimo)
+
 Permite a realização de empréstimos de livros. O usuário deve fornecer o ID do usuário e o ID do livro.
 
+
 Devolução de Empréstimo (devolucao_emprestimo)
+
 Possibilita a atualização da data de devolução de um livro emprestado. O usuário deve fornecer o ID do empréstimo e a nova data de devolução.
 
+
 Ver Livros Emprestados (ver_livros_emprestados)
+
 Apresenta uma tabela com todos os livros atualmente emprestados, mostrando informações como ID, título, usuário, data de saída e data de devolução prevista.
+
 
 # Menu de Navegação
 O sistema conta com um menu à esquerda que permite a navegação entre as diferentes funcionalidades. Cada botão do menu chama a função correspondente.
