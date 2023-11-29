@@ -1,3 +1,7 @@
+#By: Cristiano Verissimo
+#Year: 2023
+#GitHub: https://github.com/CristianoVerissimo
+
 from tkinter import Tk, ttk
 from tkinter .ttk import *
 from tkinter import *
@@ -415,6 +419,7 @@ def ver_livros_emprestados():
 
     for item in dados:
         tree.insert('', 'end', values=item)
+        
 
 
 #Back-end Menu
